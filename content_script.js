@@ -48,7 +48,7 @@ $(function() {
     var articles = [article1, article2, article3];
 
     for (x in articles) {
-        var title = $("<h4></h4>").text(x.title);
+        var title = "<h4>" + x.title + "</h4>";
         var url = "<a href=\"" + x.url + "\">" + x.url + "</a>";
         var bias = "<p>Bias of article: " + x.bias + "</p>";
         $("#morenews").append(title, url, bias);
