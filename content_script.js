@@ -36,6 +36,13 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
 
             var articles = [article1, article2, article3];
 
+            for (x in articles) {
+                var title = $("<h4></h4>").text(x.title);
+                $("#morenews").append(title);
+            }
+
+
+
             console.log(result);
         }
     );
