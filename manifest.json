@@ -1,0 +1,20 @@
+{
+    "name": "NAME",
+    "version": "1.0",
+    "permissions": ["activeTab"],
+    "description": "Build an Extension!",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+      },
+    "content_scripts": [
+       {
+        "matches":  [
+            "http://*.nytimes.com/*"
+        ],
+        "css": ["myStyles.css"],
+        "js": ["content_script.js"]
+        }
+      ],
+    "manifest_version": 2
+}
