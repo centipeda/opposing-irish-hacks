@@ -21,7 +21,10 @@ query = ""
 for k in keywords:
     query = query + k + " "
 
-center_query= query + "("
+for j in search(query, tld="co.in", num=2, stop = 2, pause=2):
+    print(j)
+
+"""center_query= query + "("
 for c in center:
     center_query = center_query + "site:" + c + " OR "
 center_query = center_query[:-4]
@@ -48,26 +51,26 @@ if not alreadyFound:
     for site in center:
         if site in url:
             alreadyFound = True
-            for j in search(right_query, tld="co.in", num = 20, pause = 2):
+            for j in search(right_query, tld="co.in", num = 20, stop=20, pause = 2):
                 print(j)
-            for j in search(left_query, tld="co.in", num=20, pause=2):
+            for j in search(left_query, tld="co.in", num=20, stop=20, pause=2):
                 print(j)
 
 if not alreadyFound:
     for site in right:
         if site in url:
             alreadyFound = True
-            for j in search(left_query, tld="co.in", num = 20, pause = 2):
+            for j in search(left_query, tld="co.in", num = 20, stop=20, pause = 2):
                 print(j)
-            for j in search(center_query, tld="co.in", num=20, pause=2):
+            for j in search(center_query, tld="co.in", num=20, stop=20, pause=2):
                 print(j)
 
 if not alreadyFound:
     for site in left:
         if site in url:
             alreadyFound = True
-            for j in search(right_query, tld="co.in", num = 20, pause = 2):
+            for j in search(right_query, tld="co.in", num = 20, stop=20, pause = 2):
                 print(j)
-            for j in search(center_query, tld="co.in", num=20, pause=2):
+            for j in search(center_query, tld="co.in", num=20, stop=20, pause=2):
                 print(j)
-
+"""

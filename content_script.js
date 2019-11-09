@@ -1,11 +1,10 @@
 console.log("testing"); 
 $.get(chrome.extension.getURL("news_box.html"), function(data) {
     console.log("getting data");
-    /*
     $("body").prepend(data);
     console.log("sending GET...");
 
-
+    /*
     fetch("https://centipeda.cc/test/get",
         {
             // mode: "no-cors",
