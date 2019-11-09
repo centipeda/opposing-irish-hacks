@@ -1,6 +1,8 @@
 import newspaper
 from newspaper import article
-import soupsieve
+import bs4
+from bs4 import BeautifulSoup
+import requests
 
 url = input()
 article = Article(url)
