@@ -22,7 +22,7 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
 
 $(function() {
     $("#closebutton").click(function() {
-    console.log("clicked");
+    // console.log("clicked");
     console.log($("#mainbox").fadeOut());
     // $("#mainbox").css("background-color", "blue");
     });
