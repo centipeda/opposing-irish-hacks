@@ -4,10 +4,10 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
         //console.log(changeInfo.url);
         // chrome.tabs.sendMessage(tabs[0].id, changeInfo.url, function(response) {});
     }
-    
+    console.info("This is the url of the tab = " + changeInfo.url);
 });
 
-chrome.tabs.query({'active': true, 'currentWindow': true}, function (tabs) {
+/* /chrome.tabs.query({'active': true, 'currentWindow': true}, function (tabs) {
   var turl = tabs[0].url;
   console.log(activeTabId);
 
@@ -41,4 +41,4 @@ function getActiveTab(callback) {
 
     }
   });
-}
+}*/
