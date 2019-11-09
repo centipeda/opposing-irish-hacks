@@ -45,15 +45,15 @@ $(function() {
     article2 = new Article ("https://www.nbcnews.com/politics/trump-impeachment-inquiry/only-3-senate-republicans-aren-t-defending-trump-impeachment-inquiry-n1078906", "Only 3 Senate Republicans aren't defending Trump from the impeachment inquiry. Here's why.", "left");
     article3 = new Article ("https://www.cbsnews.com/news/trump-impeachment-inquiry-recap-house-releases-testimony-transcripts-prepares-public-hearings-2019-11-09/", "What happened in the impeachment inquiry this week", "neutral");
 
-    article1.title="Trump wants Pelosi";
+    //article1.title="Trump wants Pelosi";
     var articles = [article1, article2, article3];
 
 
     for (x in articles) {
-        var title = "<h4>" + x.title + "</h4>";
-        var url = "<a href=\"" + x.url + "\">" + x.url + "</a>";
-        var bias = "<p>Bias of article: " + x.bias + "</p>";
-        $("#morenews").append(title, url, bias);
+        var t = "<h4>" + x.title + "</h4>";
+        var u = "<a href=\"" + x.url + "\">" + x.url + "</a>";
+        var b = "<p>Bias of article: " + x.bias + "</p>";
+        $("#morenews").append(t, u, b);
     };
             
     });

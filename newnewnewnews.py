@@ -1,14 +1,24 @@
 import requests
 import json
 import os
+import sys
+import newspaper
+
+for l in sys.stdin:
+    articleLink = l
+article = newspaper.Article(articleLink)
+article.download()
+article.parse()
 
 queryString = ""
 apiKey = "JuD8ZyOZjrfEJzMiPjIRLUTLejmuEe8kuyKUn1xSzeol"
 queryURL = "https://gateway.watsonplatform.net/discovery/api/v1/environments/system?version=2019-04-30&query="
 command = '/usr/bin/curl -u apikey:{} {}'.format(apiKey, queryURL)
+
 stream = os.popen(command + queryString)
 data = stream.read()
 
+articleData = data['results'][0]
 
 
 #1st Query (Match title of article, return entities)
