@@ -4,10 +4,9 @@ import json
 queryString = "IBM"
 apiKey = "JuD8ZyOZjrfEJzMiPjIRLUTLejmuEe8kuyKUn1xSzeol"
 queryURL = "https://gateway.watsonplatform.net/discovery/api/v1/environments/system?version=2019-04-30&query="
-command = '/usr/bin/curl -u apikey:{} {}'
-url = queryURL.format(queryString)
+command = '/usr/bin/curl -u apikey:{} {}'.format(apiKey, queryURL)
+
 print(url)
-response = requests.get(url, auth=('apikey', apiKey))
 print(response)
 
 #1st Query (Match title of article, return entities)

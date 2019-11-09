@@ -33,12 +33,18 @@ $(function() {
     // console.log("clicked");
     //console.log($("#mainbox").fadeOut());
     // $("#mainbox").css("background-color", "blue");
-    class Article {
+    /*class Article {
         constructor(u, t, b) {
             this.url = u;
             this.title = t;
             this.bias = b;
         }
+    }*/
+
+    function Article(u, t, b) {
+        this.url = u;
+        this.title = t;
+        this.bias = b;
     }
     
     article1 = new Article ("https://www.foxnews.com/politics/trump-brushes-off-witch-hunt-impeachment-probe", "Trump wants Pelosi, Biden to be called as impeachment inquiry witnesses, says he'll release second phone call transcript", "right");
