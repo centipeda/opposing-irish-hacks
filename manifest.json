@@ -10,8 +10,7 @@
     "content_scripts": [
        {
         "matches":  [
-            "http://*.google.com/*",
-            "https://*/*"
+            "https://*.nytimes.com/*"
         ],
         "js": ["content_script.js"]
         }
