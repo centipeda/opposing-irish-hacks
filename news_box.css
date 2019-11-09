@@ -2,7 +2,7 @@
     font: Roboto !important;
     position: fixed !important;
     background-color: white !important;
-    height: 200px !important;
+    height: 200px;
     width: 350px !important;
     z-index: 10000 !important;
     top: 100px !important;
