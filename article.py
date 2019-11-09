@@ -23,21 +23,22 @@ for k in keywords:
 
 center_query= query + "("
 for c in center:
-    center_query = center_query + "site:" + c + "OR"
-center_query[:-2]
+    center_query = center_query + "site:" + c + " OR "
+center_query = center_query[:-4]
 center_query+=")"
 
 left_query = query + "("
 for l in left:
-    left_query = left_query + "site:" + c + "OR"
-left_query[:-2]
+    left_query = left_query + "site:" + c + " OR "
+left_query = left_query[:-4]
 left_query+=")"
 
 right_query= query + "("
 for r in right:
-    right_query = right_query + "site:" + r + "OR"
-right_query[:-2]
+    right_query = right_query + "site:" + r + " OR "
+right_query = right_query[:-4]
 right_query+=")"
+print(right_query)
 
 #Check which list site is in and filter query to sites from
 #other two lists
