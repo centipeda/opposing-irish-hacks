@@ -1,15 +1,30 @@
 {
-    "name": "NAME",
+    "name": "New Perspective",
     "version": "1.0",
     "permissions": ["activeTab"],
     "description": "Build an Extension!",
     "content_scripts": [
        {
         "matches":  [
-            "https://*.google.com/*"
+            "https://*.google.com/*",
+            "https://*.npr.org/*",
+            "https://*.news.yahoo.com/*"
         ],
-        "js": ["content_script.js"]
+
+        "js": [ "ext/jquery-3.4.1.min.js",
+                "ext/boundary.js",
+                "ext/popup.js",
+                "ext/material.min.js",
+                "content_script.js"],
+
+        "css": ["ext/material.min.css",
+                "ext/boundary.css",
+                "ext/boundary-extra.css",
+                "news_box.css"]
         }
       ],
-    "manifest_version": 2
+    "manifest_version": 2,
+    "web_accessible_resources": [
+        "news_box.html"
+    ]
 }

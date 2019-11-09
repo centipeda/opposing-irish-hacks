@@ -1,0 +1,10 @@
+#mainbox {
+    font-family: Roboto;
+    position: fixed;
+    background-color: white;
+    height: 200px;
+    width: 350px;
+    z-index: 10000;
+    top: 100px;
+    right: 50px;
+}
