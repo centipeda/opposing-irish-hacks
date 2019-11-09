@@ -28,7 +28,7 @@ print("keywords: " + query)
 client = NewsApiClient(api_key='0cfc6dadf31e40d588afd3cbb5020b09')
 
 all_articles = client.get_everything(q=query,
-                                      sources='bbc-news, cnn, fox-news',
+                                      sources='bbc-news, cnn, fox-news, msnbc, the-wall-street-journal, the huffington-post, the washington-post',
                                       from_param=earliest.isoformat(),
                                       to=latest.isoformat(),
                                       language='en',
