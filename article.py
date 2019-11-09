@@ -6,12 +6,11 @@ import requests
 url = "https://www.cnn.com/2019/11/08/us/osu-abuse-lawsuit-title-ix/index.html"
 article = Article(url)
 article.download()
-#article.html
 article.parse()
 article.nlp()
 
-center = ["bbc.com", "apnews.com", "reuters", "npr", "abc news", "wall street journal", "nytimes", "politico", "newsy", "cbs news", "business insider", "fortune"]
-left = ["cnn", "washpo", "vox.com", "newyorker.com", "theatlantic.com", "huffingtonpost.com", "vanityfair.com", "progressive.org"]
+center = ["bbc.com", "apnews.com", "reuters.com", "npr.org", "abcnews.go.com", "wsj.com", "nytimes.com", "politico.com", "cbsnews.com", "businessinsider.com", "fortune.com"]
+left = ["cnn.com", "washingtonpost.com", "vox.com", "newyorker.com", "theatlantic.com", "huffingtonpost.com", "vanityfair.com", "progressive.org"]
 right =["foxnews.com", "msnbc.com", "nypost.com", "reason.com"]
 
 keywords = article.keywords
