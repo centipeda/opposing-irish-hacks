@@ -1,13 +1,15 @@
 import requests
 import json
+import os
 
-queryString = "IBM"
+queryString = ""
 apiKey = "JuD8ZyOZjrfEJzMiPjIRLUTLejmuEe8kuyKUn1xSzeol"
 queryURL = "https://gateway.watsonplatform.net/discovery/api/v1/environments/system?version=2019-04-30&query="
 command = '/usr/bin/curl -u apikey:{} {}'.format(apiKey, queryURL)
+stream = os.popen(command + queryString)
+data = stream.read()
 
-print(url)
-print(response)
+
 
 #1st Query (Match title of article, return entities)
 #enriched_title.entities.disambiguation.name::'ArticleName'
