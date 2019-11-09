@@ -13,12 +13,50 @@ center = ["bbc.com", "apnews.com", "reuters.com", "npr.org", "abcnews.go.com", "
 left = ["cnn.com", "washingtonpost.com", "vox.com", "newyorker.com", "theatlantic.com", "huffingtonpost.com", "vanityfair.com", "progressive.org"]
 right =["foxnews.com", "msnbc.com", "nypost.com", "reason.com"]
 
+#find keywords and add them to query
 keywords = article.keywords
 print(keywords)
 
 query = ""
 for k in keywords:
     query = query + k + " "
+
+center_query=query
+for c in center:
+    center_query = center_query + "site:" + c + "OR"
+center_query[:-2]
+
+
+for l in left:
+    left_query = left_query + "site:" + c + "OR"
+left_query[:-2]=""
+
+right_query=query
+for r in right:
+    right_query = right_query + "site:" + r + "OR"
+right_query[:-2]
+
+#Check which list site is in and filter query to sites from
+#other two lists
+for site in center:
+    if site in url:
+        for j in search(right_query, tld="co.in", num = 20, pause = 2):
+            print(j)
+        for j in search(left_query, tld="co.in", num=20, pause=2):
+            print(j)
+
+for site in right:
+    if site in url:
+        query = left_query + center_query
+
+for site in left:
+    if site in url:
+        query = right_query + center_query
+
+
+
+
+
 
 for j in search(query, tld="co.in", num=20, pause=2): 
     print(j) 

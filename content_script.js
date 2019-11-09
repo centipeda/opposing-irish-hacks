@@ -1,6 +1,7 @@
 console.log("testing"); 
 $.get(chrome.extension.getURL("news_box.html"), function(data) {
     console.log("getting data");
+    /*
     $("body").prepend(data);
     console.log("sending GET...");
 
@@ -13,17 +14,15 @@ $.get(chrome.extension.getURL("news_box.html"), function(data) {
             console.log(result);
         }
     );
-
+        */
 });
 
 chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
     console.log(msg);
-    console.log("getting data");
-    $("body").prepend(data);
     console.log("sending GET...");
-
-
-    fetch("https://centipeda.cc/test/get",
+    var encodedURL = encodeURIComponent(msg);
+    console.log(encodedURL);
+    fetch("https://centipeda.cc/test/get/" + encodedURL,
         {
             // mode: "no-cors",
             method: "GET"
