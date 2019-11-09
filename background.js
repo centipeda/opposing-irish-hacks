@@ -6,7 +6,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     }
     chrome.tabs.query({'active': true, 'currentWindow': true}, function (tabs) {
         //var turl = tabs[0].url;
-        console.log(getActiveTab);
+        console.log(activeTabId);
 
         chrome.tabs.sendMessage(tabs[0].id, "hello", function(response) {});
         // chrome.tabs.sendMessage(tabs[0].id, "url should be: " + turl, function(response) {});
