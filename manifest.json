@@ -12,7 +12,6 @@
         "matches":  [
             "http://*.nytimes.com/*"
         ],
-        "css": ["myStyles.css"],
         "js": ["content_script.js"]
         }
       ],
