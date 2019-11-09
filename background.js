@@ -2,12 +2,41 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     if(changeInfo.status == "complete") {
         console.log("finished loading");
         //console.log(changeInfo.url);
+        // chrome.tabs.sendMessage(tabs[0].id, changeInfo.url, function(response) {});
     }
     chrome.tabs.query({'active': true, 'currentWindow': true}, function (tabs) {
-        var turl = tabs[0].url;
-        
-        chrome.tabs.sendMessage(tabs[0].id, "hello", function(response) {});
+        //var turl = tabs[0].url;
+        console.log(var.getActiveTab);
 
-        console.log(turl);
+        chrome.tabs.sendMessage(tabs[0].id, "hello", function(response) {});
+        // chrome.tabs.sendMessage(tabs[0].id, "url should be: " + turl, function(response) {});
+        // chrome.tabs.sendMessage(tabs[0].id, "url should precede this", function(response) {});
+
+        // console.log(turl);
     });
 });
+
+var activeTabId;
+
+chrome.tabs.onActivated.addListener(function(activeInfo) {
+  activeTabId = activeInfo.tabId;
+});
+
+function getActiveTab(callback) {
+  chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+    var tab = tabs[0];
+
+    if (tab) {
+      callback(tab);
+    } else {
+      chrome.tabs.get(activeTabId, function (tab) {
+        if (tab) {
+          callback(tab);
+        } else {
+          console.log('No active tab identified.');
+        }
+      });
+
+    }
+  });
+}

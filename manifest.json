@@ -21,7 +21,6 @@
                 "content_script.js"],
 
         "css": ["ext/material.min.css",
-                "ext/boundary-extra.css",
                 "news_box.css"
             ]
         }
