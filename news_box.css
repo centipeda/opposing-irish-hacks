@@ -1,10 +1,10 @@
 #mainbox {
     font: Roboto !important;
-    position: fixed;
-    background-color: white;
-    height: 200px;
-    width: 350px;
-    z-index: 10000;
-    top: 100px;
-    right: 50px;
+    position: fixed !important;
+    background-color: white !important;
+    height: 200px !important;
+    width: 350px !important;
+    z-index: 10000 !important;
+    top: 100px !important;
+    right: 50px !important;
 }

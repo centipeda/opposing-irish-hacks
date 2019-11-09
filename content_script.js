@@ -8,9 +8,10 @@ $.get(chrome.extension.getURL("news_box.html"), function(data) {
         {
             // mode: "no-cors",
             method: "GET"
-        }).then( (res) => {
-            console.log(res);
-    });
+        }).then( (res) => res.json()).then( (result) => {
+            console.log(result);
+        }
+        );
     /*
     chrome.webRequest.onBeforeRequest.addListener((details) => {
         const { tabId, requestId } = details;
