@@ -1,6 +1,5 @@
-div#mainbox {
-    all:initial;
-    font-family: Roboto !important;
+#mainbox {
+    font: Roboto !important;
     position: fixed;
     background-color: white;
     height: 200px;
