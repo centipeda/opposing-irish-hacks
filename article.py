@@ -21,13 +21,13 @@ query = ""
 for k in keywords:
     query = query + k + " "
 
-center_query= "(" + query
+center_query= query + "("
 for c in center:
     center_query = center_query + "site:" + c + "OR"
 center_query[:-2]
 center_query+=")"
 
-left_query = "(" + query
+left_query = query + "("
 for l in left:
     left_query = left_query + "site:" + c + "OR"
 left_query[:-2]
