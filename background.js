@@ -3,4 +3,5 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
       console.log("finished loading");
       console.log(tab.url);
     }
+    
 });

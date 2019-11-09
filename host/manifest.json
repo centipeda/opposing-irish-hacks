@@ -1,9 +1,0 @@
-{
-  "name": "python_extension_host",
-  "description": "a Chrome Extension running Python",
-  "path": "C:\\Program Files\\My Application\\chrome_native_messaging_host.exe",
-  "type": "stdio",
-  "allowed_origins": [
-    "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/"
-  ]
-}
