@@ -1,12 +1,13 @@
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     if(changeInfo.status == "complete") {
       console.log("finished loading");
-      var url;
+      console.log(tab.url);
+      /*var url;
       var tab_id = tabId.tabId;
       chrome.tabs.get(tab_id, function(tab){
         url = tab.url;
         console.log(url);
-      });
+      });*/
         /*chrome.tabs.getCurrent(function(tab){
           console.log(tab.url);
         }
@@ -14,7 +15,8 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
         //console.log(changeInfo.url);
         // chrome.tabs.sendMessage(tabs[0].id, changeInfo.url, function(response) {});
     }
-    console.info("This is the url of the tab = " + changeInfo.url);
+    console.log(tab.url);
+    //console.info("This is the url of the tab = " + changeInfo.url);
 });
 
 
