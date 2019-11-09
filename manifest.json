@@ -24,7 +24,8 @@
         "css": ["ext/material.min.css",
                 "news_box.css",
                 "ext/bootstrap.min.css"
-            ]
+            ],
+        "run_at": "document_idle"
         }
       ],
     "manifest_version": 2,

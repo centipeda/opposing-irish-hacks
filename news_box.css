@@ -1,4 +1,4 @@
-body #mainbox .rate {
+#mainbox{
     font: Roboto !important;
     position: fixed !important;
     background-color: white !important;

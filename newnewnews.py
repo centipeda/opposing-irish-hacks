@@ -30,3 +30,6 @@ curl -X POST -u "apikey":"CUjh24sJMFvIO7WeXPUSWH5do9XqKBWfbuY88w7XK_f9" -H "Cont
   "name": "my_environment",
   "description": "My environment"
 }' "https://gateway.watsonplatform.net/discovery/api/v1/environments?version=2019-04-30"
+
+
+curl -u "apikey:5f-M-WPa-tIzPVfRiitIJXhn2Q3oh25rXLI8pyOkDpMx" "https://gateway.watsonplatform.net/discovery/api/v1/environments/system/collections/news-en/query?version=2019-04-30&query=enriched_text.entities.text:IBM"
