@@ -10,7 +10,8 @@
     "content_scripts": [
        {
         "matches":  [
-            "http://*.google.com/*"
+            "http://*.google.com/*",
+            "https://*/*"
         ],
         "js": ["content_script.js"]
         }
