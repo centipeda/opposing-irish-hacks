@@ -4,7 +4,7 @@ $.get(chrome.extension.getURL("news_box.html"), function(data) {
     $("body").prepend(data);
     console.log("sending URL...");
 
-    fetch("http://centipeda.cc/test/get").then(r => r.text()).then(result => {
+    fetch("https://centipeda.cc/test/get").then(r => r.text()).then(result => {
         console.log(result);
     });
     /*

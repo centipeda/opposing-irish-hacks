@@ -1,7 +1,7 @@
 {
     "name": "New Perspective",
     "version": "1.0",
-    "permissions": ["nativeMessaging", "tabs", "http://*.centipeda.cc:9001/test/*"],
+    "permissions": ["nativeMessaging", "tabs", "https://*.centipeda.cc:9001/test/*"],
     "description": "Read articles from various perspectives!",
     "background": {
         "scripts": ["background.js"],
