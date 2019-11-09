@@ -22,7 +22,8 @@
 
         "css": ["ext/material.min.css",
                 "ext/boundary-extra.css",
-                "news_box.css"]
+                "news_box.css"
+            ]
         }
       ],
     "manifest_version": 2,

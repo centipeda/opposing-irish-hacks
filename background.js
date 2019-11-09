@@ -4,7 +4,10 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
         //console.log(changeInfo.url);
     }
     chrome.tabs.query({'active': true, 'currentWindow': true}, function (tabs) {
-        var url = tabs[0].url;
-        console.log(url);
+        var turl = tabs[0].url;
+        
+        chrome.tabs.sendMessage(tabs[0].id, "hello", function(response) {});
+
+        console.log(turl);
     });
 });
