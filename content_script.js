@@ -1,8 +1,8 @@
-console.log("testing"); 
+// console.log("testing"); 
 $.get(chrome.extension.getURL("news_box.html"), function(data) {
-    console.log("getting data");
+    // console.log("getting data");
     $("body").prepend(data);
-    console.log("sending GET...");
+    // console.log("sending GET...");
 });
 
 chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
@@ -19,3 +19,6 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
         }
     );
   });
+
+  $("")
+    $("#mainbox").hide();
