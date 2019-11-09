@@ -1,5 +1,5 @@
 from newspaper import Article
-from googlesearch import search
+#from googlesearch import search
 import requests
 
 #url = input()
@@ -21,10 +21,10 @@ query = ""
 for k in keywords:
     query = query + k + " "
 
-for j in search(query, tld="co.in", num=2, stop = 2, pause=2):
+"""for j in search(query, tld="co.in", num=2, stop = 2, pause=2):
     print(j)
 
-"""center_query= query + "("
+center_query= query + "("
 for c in center:
     center_query = center_query + "site:" + c + " OR "
 center_query = center_query[:-4]
