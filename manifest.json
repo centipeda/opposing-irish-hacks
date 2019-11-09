@@ -5,7 +5,7 @@
     "description": "Build an Extension!",
     "background": {
         "scripts": ["background.js"],
-        "persisten": false
+        "persistent": false
     },
     "content_scripts": [
        {
