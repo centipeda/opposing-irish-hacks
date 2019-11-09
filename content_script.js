@@ -38,11 +38,10 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
 
             for (x in articles) {
                 var title = $("<h4></h4>").text(x.title);
-                var temp1 = "<a href"
-                $("#morenews").append(title);
+                var url = "<a href=\"" + x.url + "\">" + x.url + "</a>";
+                var bias = "<p>Bias of article: " + x.bias + "</p>";
+                $("#morenews").append(title, url, bias);
             }
-
-
 
             console.log(result);
         }
