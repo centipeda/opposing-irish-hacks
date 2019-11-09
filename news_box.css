@@ -1,4 +1,5 @@
 #mainbox {
+    all: inherit;
     font: Roboto !important;
     position: fixed !important;
     background-color: white !important;
