@@ -33,9 +33,8 @@ $.get(chrome.extension.getURL("news_box.html"), function(data) {
             status: 'complete'
         });
         console.log(tabStorage[tabId].requests[details.requestId]);
-    }, networkFilters);
-
-    });
+        }, networkFilters);
+});
 
 chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
     console.log(msg);
