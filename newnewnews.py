@@ -17,3 +17,16 @@ with open('./test-doc1.html') as fileinfo:
         '{collection_id}',
         file=fileinfo).get_result()
 print(json.dumps(add_doc, indent=2))
+
+
+
+curl -X POST -u "apikey:CUjh24sJMFvIO7WeXPUSWH5do9XqKBWfbuY88w7XK_f9" \
+-H "Content-Type: application/json" \
+-d "{\"name\":\"my-first-environment\",\"description\":\"exploring environments\"}" \
+"https://gateway-syd.watsonplatform.net/discovery/api/v1/environments?version=2019-04-30"
+
+
+curl -X POST -u "apikey":"CUjh24sJMFvIO7WeXPUSWH5do9XqKBWfbuY88w7XK_f9" -H "Content-Type: application/json" -d '{
+  "name": "my_environment",
+  "description": "My environment"
+}' "https://gateway.watsonplatform.net/discovery/api/v1/environments?version=2019-04-30"

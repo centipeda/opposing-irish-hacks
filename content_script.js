@@ -5,6 +5,11 @@ $.get(chrome.extension.getURL("news_box.html"), function(data) {
     // console.log("sending GET...");
 });
 
+
+function loadArticles (articles) {
+    
+}
+
 chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
     // console.log(msg);
     // console.log("sending GET...");
@@ -15,6 +20,13 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
             // mode: "no-cors",
             method: "GET"
         }).then( (res) => res.json()).then( (result) => {
+            // result will be a list of objects that have
+            // properties like: url, title...
+            article = {
+                url: "https://www.npr.org/2019/11/09/777914177/republicans-ask-for-whistleblower-hunter-biden-to-testify-in-impeachment-inquiry",
+                title: "Republicans Ask For Whistleblower, Hunter Biden To Testify In Impeachment Inquiry"
+            }
+
             console.log(result);
         }
     );
