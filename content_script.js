@@ -23,5 +23,5 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
 $(function() {
 $("#closebutton").click(function() {
   console.log("clicked");
-  $("#mainbox").hidden = true;
+  $("#mainbox").css("background-color", "blue");
 }); });
