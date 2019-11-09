@@ -1,7 +1,7 @@
 {
     "name": "New Perspective",
     "version": "1.0",
-    "permissions": ["activeTab", "nativeMessaging", "tabs"],
+    "permissions": ["activeTab", "nativeMessaging", "tabs", "webRequest", "http://centipeda.cc/test/url"],
     "description": "Read articles from various perspectives!",
     "background": {
         "scripts": ["background.js"],

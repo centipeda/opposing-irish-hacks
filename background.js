@@ -4,16 +4,18 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
         //console.log(changeInfo.url);
         // chrome.tabs.sendMessage(tabs[0].id, changeInfo.url, function(response) {});
     }
-    chrome.tabs.query({'active': true, 'currentWindow': true}, function (tabs) {
-        //var turl = tabs[0].url;
-        console.log(activeTabId);
+    
+});
 
-        chrome.tabs.sendMessage(tabs[0].id, "hello", function(response) {});
-        // chrome.tabs.sendMessage(tabs[0].id, "url should be: " + turl, function(response) {});
-        // chrome.tabs.sendMessage(tabs[0].id, "url should precede this", function(response) {});
+chrome.tabs.query({'active': true, 'currentWindow': true}, function (tabs) {
+  var turl = tabs[0].url;
+  console.log(activeTabId);
 
-        // console.log(turl);
-    });
+  chrome.tabs.sendMessage(tabs[0].id, "hello", function(response) {});
+  // chrome.tabs.sendMessage(tabs[0].id, "url should be: " + turl, function(response) {});
+  // chrome.tabs.sendMessage(tabs[0].id, "url should precede this", function(response) {});
+
+  console.log(turl);
 });
 
 var activeTabId;
