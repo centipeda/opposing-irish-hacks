@@ -4,8 +4,8 @@ $.get(chrome.extension.getURL("news_box.html"), function(data) {
     $("body").prepend(data);
     console.log("sending URL...");
 
-    fetch("https://centipeda.cc/test/get").then(r => r.text()).then(result => {
-        console.log(result);
+    fetch("https://centipeda.cc/test/get", {mode: "no-cors"}).then( (res) => {
+        console.log(res);
     });
     /*
     chrome.webRequest.onBeforeRequest.addListener((details) => {
