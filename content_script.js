@@ -4,6 +4,9 @@ $.get(chrome.extension.getURL("news_box.html"), function(data) {
     $("body").prepend(data);
     console.log("sending URL...");
 
+    const response = await po
+
+    /*
     chrome.webRequest.onBeforeRequest.addListener((details) => {
         const { tabId, requestId } = details;
         if (!tabStorage.hasOwnProperty(tabId)) {
@@ -33,7 +36,7 @@ $.get(chrome.extension.getURL("news_box.html"), function(data) {
             status: 'complete'
         });
         console.log(tabStorage[tabId].requests[details.requestId]);
-        }, networkFilters);
+        }, networkFilters); */
 });
 
 chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {

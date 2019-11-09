@@ -7,14 +7,19 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     console.info("This is the url of the tab = " + changeInfo.url);
 });
 
-chrome.tabs.onActivated.addListener(function (tabId) {
+chrome.tabs.getCurrent(function(tab){
+  console.log(tab.url);
+}
+);
+
+/*chrome.tabs.onActivated.addListener(function (tabId) {
   var url;
   var tab_id = tabId.tabId;
   chrome.tabs.get(tab_id, function(tab){
       url = tab.url;
       console.log(url);
   });
-});
+});*/
 
 /* /chrome.tabs.query({'active': true, 'currentWindow': true}, function (tabs) {
   var turl = tabs[0].url;
