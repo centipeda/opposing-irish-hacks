@@ -5,7 +5,7 @@ queryURL = "https://gateway.watsonplatform.net/discovery/api/v1/environments/sys
 
 url = queryURL.format(queryString)
 print(url)
-# response = requests.get(url, auth=('apikey', apiKey))
-# print(response)
+response = requests.get(url, auth=('apikey', apiKey))
+print(response)
 
 
