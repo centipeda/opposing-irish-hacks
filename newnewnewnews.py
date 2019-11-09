@@ -10,4 +10,12 @@ print(url)
 response = requests.get(url, auth=('apikey', apiKey))
 print(response)
 
+#1st Query (Match title of article, return entities)
+#enriched_title.entities.disambiguation.name::'ArticleName'
+#enriched_title.entities.text::'ArticleName'
+#title::'ArticleName'
+
+#Get entities from the article that is queried
+
+#2nd Query (Find related articles to the entities of first article)
 

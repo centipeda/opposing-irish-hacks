@@ -31,8 +31,8 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
 $(function() {
     $("#closebutton").click(function() {
     // console.log("clicked");
-    console.log($("#mainbox").fadeOut());
-    //// $("#mainbox").css("background-colo
+    //console.log($("#mainbox").fadeOut());
+    // $("#mainbox").css("background-color", "blue");
     class Article {
         constructor(u, t, b) {
             this.url = u;
@@ -52,6 +52,7 @@ $(function() {
         var url = "<a href=\"" + x.url + "\">" + x.url + "</a>";
         var bias = "<p>Bias of article: " + x.bias + "</p>";
         $("#morenews").append(title, url, bias);
-    }r", "blue");
+    };
+            
     });
 });
