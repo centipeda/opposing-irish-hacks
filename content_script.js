@@ -37,8 +37,8 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
             for (x in aData) {
                 article = aData[x];
                 var space = "<hr>";
-                var t = "<h4>" + article.title + "</h4>";
-                var u = "<a href=\"" + article.url + "\">" + article.url + "</a>";
+                var t = "<h5><a href=\"" +article.url + "\">" + article.title + "</h5>";
+                //var u = "<h5><a href=\"" +article.url + "\">" + article.url + " </a></h5>";
                 var b = "<p>Bias of article: " + article.bias + "</p>";
                 $("#morenews").append(space, t, u, b);
             };
@@ -49,7 +49,7 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
 
 $(function() {
     $("#closebutton").click(function() {
-    // console.log("clicked");
+    console.log("clicked");
     console.log($("#mainbox").fadeOut());
     // $("#mainbox").css("background-color", "blue");
             

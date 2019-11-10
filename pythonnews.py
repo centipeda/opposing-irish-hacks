@@ -18,6 +18,7 @@ def get_title(url):
     article = newspaper.Article(url)
     article.download()
     article.parse()
+    print("article title: ".format(article.title))
     return article.title
 
 def watson_auth():
@@ -33,7 +34,7 @@ def watson_auth():
     # Env and Collection IDs
 
 def first_query(discovery, title):
-    firstDoc = discovery.query(environment_id, collection_id, query="title:{}".format(title), deduplicate=True, sort=['relevance'])
+    firstDoc = discovery.query(environment_id, collection_id, query="title:{}".format(title), deduplicate=True, deduplicate_field='title', sort=None)
 
     # print(firstDoc)
     return firstDoc
@@ -48,7 +49,11 @@ def main():
     url = get_url()
     title = get_title(url)
     discover = watson_auth()
-    docID = first_query(discover, title)
+    firstDoc = first_query(discover, title)
+    #docID = print(json.dumps(firstDoc.get_result()[0], indent=2))
+    #docID = firstDoc.get_result()['results'][0]['title']
+    docID = firstDoc.get_result()['matching_results']
+    print(docID)
     # second_query(discover, docID)
 
 def test():

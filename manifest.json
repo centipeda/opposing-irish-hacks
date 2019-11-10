@@ -10,9 +10,12 @@
     "content_scripts": [
        {
         "matches":  [
-            "https://*.google.com/*",
             "https://*.npr.org/*",
-            "https://*.news.yahoo.com/*"
+            "https://*.news.yahoo.com/*",
+            "https://*.reuters.com/article/*",
+            "https://*.apnews.com/*",
+            "https://*.cnn.com/*",
+            "https://*.foxnews.com/*/*"
         ],
 
         "js": [ "ext/jquery-3.4.1.min.js",
