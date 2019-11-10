@@ -60,7 +60,10 @@ $(function() {
     });
 
     $("#yes-but").click( function() {
-        if($("#yes-but").)
-        $("#yes-but").text("Searching...");
+        if($("#yes-but").attr("touched") == "false") {
+            $("#yes-but").text("Searching...");
+        } else {
+            $("#yes-but".text(""))
+        }
     });
 });
