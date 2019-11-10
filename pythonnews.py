@@ -42,13 +42,14 @@ def first_query(discovery, title):
     # print(firstDoc)
     return firstDoc
 
-def second_query(discovery, docID, docurl, validHosts):
+def second_query(discovery, docID, docurl, validHosts, alignment):
     #Insert code using data from first document to find similar documents
     print(validHosts)
-    secondDoc = discovery.query(environment_id, collection_id, query = "host:{}".format(validHosts),
+    secondDoc = discovery.query(environment_id, collection_id, query = "host:{}".format(" ".join(validHosts)),
                                 similar=True, similar_document_ids=docID, count = 5, deduplicate = True)  
 
-    return secondDoc
+    docInfo = (secondDoc, alignment)
+    return docInfo
 
 
 def main():
@@ -80,24 +81,34 @@ def main():
         for site in left:
             if site in docSource:
                 alreadyFound = True
-                validHosts = center.extend(right)
+                validHosts = center+right
+                secondDocFirst = second_query(discover, docID, docTitle, center, "center")
+                secondDocSecond = second_query(discover, docID, docTitle, right, "right")
+                
 
     if not alreadyFound:
         for site in center:
             if site in docSource:
                 alreadyFound = True
                 validHosts = left+right
+                secondDocFirst = second_query(discover, docID, docTitle, left, "left")
+                secondDocSecond = second_query(discover, docID, docTitle, right, "right")
 
     if not alreadyFound:
         for site in right:
             if site in docSource:
                 alreadyFound = True
-                validHosts = center.extend(left)
+                validHosts = center+left
+                secondDocFirst = second_query(discover, docID, docTitle, center, "center")
+                secondDocSecond = second_query(discover, docID, docTitle, left, "left")
 
 
-    secondDoc = second_query(discover, docID, docTitle, validHosts)
-    print(secondDoc.get_result()['results'][0]['url'])
-    print(secondDoc.get_result()['results'][0]['title'])
+    print(secondDocFirst[0].get_result()['results'][0]['url'])
+    print(secondDocFirst[0].get_result()['results'][0]['title'])
+    print(secondDocFirst[1])
+    print(secondDocSecond[0].get_result()['results'][0]['url'])
+    print(secondDocSecond[0].get_result()['results'][0]['title'])
+    print(secondDocSecond[1])
 
 def test():
     url = get_url()
