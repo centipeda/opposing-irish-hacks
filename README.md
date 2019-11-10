@@ -1,5 +1,4 @@
 # opposing-irish-hacks
 New Perspectives:
 A chrome extention created to encourage opposing viewpoints.
-
-![image of extension window](media/np.png)
+<img src="media/np.png" height="250">
