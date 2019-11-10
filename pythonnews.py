@@ -10,9 +10,9 @@ environment_id = 'system'
 collection_id = 'news-en'
 
 def get_url():
-    # return "https://www.npr.org/2019/11/08/777573489/white-house-broke-from-normal-process-handling-trump-ukraine-call-witness-said"
-    for l in sys.stdin:
-        url = l
+    return "https://www.washingtonpost.com/politics/believe-it-or-not-bernie-sanders-is-relaxing/2019/11/09/f83a4030-fff8-11e9-8bab-0fc209e065a8_story.html"
+    #for l in sys.stdin:
+    #    url = l
     return url
     
 def get_title(url):

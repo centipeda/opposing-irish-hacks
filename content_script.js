@@ -63,6 +63,10 @@ $(function() {
             console.log("clicked once");
             $("#yes-but").text("Searching...");
             $("#yes-but").attr("touched", "once");
+            /*
+            setTimeout(() => {
+
+            }, 15000); */
         } else if($("#yes-but").attr("touched") == "once") {
             $("#yes-but").text("Show");
             $("#yes-but").attr("touched", "twice");
