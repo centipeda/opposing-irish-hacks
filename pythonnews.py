@@ -2,11 +2,14 @@ import os
 import sys
 import newspaper
 import json
+from urllib.parse import urlparse
 from ibm_watson import DiscoveryV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 
 environment_id = 'system'
 collection_id = 'news-en'
+
+hostName = urlparse(url).netloc
 
 def get_url():
     return "https://www.npr.org/2019/11/08/777573489/white-house-broke-from-normal-process-handling-trump-ukraine-call-witness-said"

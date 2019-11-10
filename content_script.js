@@ -57,10 +57,10 @@ $(function() {
     });
 
     $("#yes-but").click( function() {
-        //if($("#yes-but").attr("touched") == "false") {
-        //    console.log("clicked once");
-        //    $("#yes-but").text("Searching...");
-        //    $("#yes-but").attr("touched", "once"); }
+        if($("#yes-but").attr("touched") == "false") {
+            console.log("clicked once");
+            $("#yes-but").text("Searching...");
+            $("#yes-but").attr("touched", "once"); }
         if($("#yes-but").attr("touched") == "once") {
             $("#yes-but").text("Show");
             $("#yes-but").attr("touched", "twice");
