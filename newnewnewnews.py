@@ -9,6 +9,7 @@ for l in sys.stdin:
 article = newspaper.Article(articleLink)
 article.download()
 article.parse()
+articleTitle = article.title
 
 queryString = ""
 apiKey = "JuD8ZyOZjrfEJzMiPjIRLUTLejmuEe8kuyKUn1xSzeol"
