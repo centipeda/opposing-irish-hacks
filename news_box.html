@@ -6,25 +6,12 @@
 <script src="content_script.js"></script>
 
 <div id="mainbox" class="card">
-    <style>
-        #mainbox {
-            font: Roboto !important;
-            position: fixed !important;
-            background-color: white !important;
-            width: 350px !important;
-            max-height: 900px !important;
-            z-index: 10000 !important;
-            top: 100px !important;
-            right: 50px !important;
-        }
-    </style>
-    <!-- <div style = "font:Roboto;position:fixed;background-color:white;width:350px;max-height:900px;z-index:10000;top:100px;right:50px;"> -->
-    <link rel="stylesheet" href="ext/bootstrap.min.css">
+    <img class="card-img-top" src="media/width_one.png" alt="Card image">
     <div class="card-body">
         <!--<h4 class="card-title">Would you like to hear another point of view?</h4> -->
         <h4 class="card-title">Would you like to hear another point of view?</h4>
         <p class="card-text">More articles like this...</p>
-        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#morenews">Yes please!</button>
+        <button type="button" id="yes-but" class="btn btn-primary" open="false" data-toggle="collapse" data-target="#morenews">Yes please!</button>
         <button type="button" class="btn btn-light" id="closebutton">No thanks</button>
     <hr>
         <div id="morenews" class="collapse">

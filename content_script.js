@@ -9,6 +9,8 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
     // console.log("sending GET...");
     var encodedURL = encodeURIComponent(msg);
     // console.log(encodedURL);
+    $("#yes-but").text("Hide");
+
     fetch("https://centipeda.cc/test/get/" + encodedURL,
         {
             // mode: "no-cors",
@@ -47,11 +49,18 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
     );
   });
 
+
+
 $(function() {
     $("#closebutton").click(function() {
     console.log("clicked");
     console.log($("#mainbox").fadeOut());
     // $("#mainbox").css("background-color", "blue");
             
+    });
+
+    $("#yes-but").click( function() {
+        if($("#yes-but").)
+        $("#yes-but").text("Searching...");
     });
 });

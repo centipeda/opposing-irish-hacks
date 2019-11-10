@@ -30,9 +30,9 @@
             ]
         }
       ],
-    //"browser_action": {
-      //  "default_icon": 
-   // }
+    "browser_action": {
+        "default_icon": "media/square_one.png"
+    },
     "manifest_version": 2,
     "web_accessible_resources": [
         "news_box.html",

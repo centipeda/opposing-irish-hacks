@@ -34,14 +34,14 @@ def watson_auth():
     # Env and Collection IDs
 
 def first_query(discovery, title):
-    firstDoc = discovery.query(environment_id, collection_id, filter="title:{}".format(title), query="title:{}".format(title), count = 20)
+    firstDoc = discovery.query(environment_id, collection_id, filter="title:{}".format(title), deduplicate = True, count = 20)
 
     # print(firstDoc)
     return firstDoc
 
 def second_query(discovery, docID):
     #Insert code using data from first document to find similar documents
-    secondDoc = discovery.query(environment_id, collection_id, query=None,
+    secondDoc = discovery.query(environment_id, collection_id,
                                 similar=True, similar_document_ids=docID, count = 5)  
 
 
@@ -52,9 +52,11 @@ def main():
     firstDoc = first_query(discover, title)
     #docID = print(json.dumps(firstDoc.get_result()[0], indent=2))
     #docID = firstDoc.get_result()['results'][0]['id']
-    docID = len(firstDoc.get_result()['results'])
+    docID = firstDoc.get_result()['results'][0]['id']
     print(docID)
-    #secondDoc = second_query(discover, docID)
+    secondDoc = second_query(discover, docID)
+    print(secondDoc.get_result())
+    #print(secondDoc['result'][0]['title'])
     #docTitle = secondDoc.get_result()['results'][0]['title']
 
 def test():
