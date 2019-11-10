@@ -1,4 +1,5 @@
-* {
+#mainbox * {
+    all: initial !important;
     font: Roboto !important;
     position: fixed !important;
     background-color: white !important;
