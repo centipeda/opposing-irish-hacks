@@ -12,7 +12,7 @@ article.parse()
 articleTitle = article.title
 
 queryString = ""
-apiKey = "JuD8ZyOZjrfEJzMiPjIRLUTLejmuEe8kuyKUn1xSzeol"
+apiKey = ""
 queryURL = "https://gateway.watsonplatform.net/discovery/api/v1/environments/system?version=2019-04-30&query="
 command = '/usr/bin/curl -u apikey:{} {}'.format(apiKey, queryURL)
 
