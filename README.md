@@ -2,4 +2,4 @@
 New Perspectives:
 A chrome extention created to encourage opposing viewpoints.
 
-![image of extension window](media/np.png =250x)
+![image of extension window](media/np.png)
