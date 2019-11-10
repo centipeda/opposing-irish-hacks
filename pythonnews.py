@@ -1,24 +1,40 @@
 import os
+import newspaper
 import json
 from ibm_watson import DiscoveryV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 
-
-authenticator = IAMAuthenticator('JuD8ZyOZjrfEJzMiPjIRLUTLejmuEe8kuyKUn1xSzeol')
-discovery = DiscoveryV1(
-    version='2019-04-30',
-    authenticator=authenticator
-)
-
-discovery.set_service_url('https://gateway.watsonplatform.net/discovery/api')
-
-#Env and Collection IDs
 environment_id = 'system'
 collection_id = 'news-en'
+    
+def get_title(url):
 
-firstDoc = query(self, environment_id, collection_id, query="title:'William Barr'")
+
+    return title
+
+def watson_auth():
+    authenticator = IAMAuthenticator('JuD8ZyOZjrfEJzMiPjIRLUTLejmuEe8kuyKUn1xSzeol')
+    discovery = DiscoveryV1(
+        version='2019-04-30',
+        authenticator=authenticator
+    )
+    discovery.set_service_url('https://gateway.watsonplatform.net/discovery/api')
+
+    return discovery
+
+    #Env and Collection IDs
+
+def firstQuery()
+firstDoc = discovery.query(environment_id, collection_id, query="title:William Barr", deduplicate = True)
 
 print(firstDoc)
+
+
+def main():
+    discover = watson_auth()
+    title = get_title()
+
+main()
 
 """
 query(self, environment_id, collection_id, filter=None, query=None,

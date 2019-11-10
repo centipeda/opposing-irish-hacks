@@ -25,7 +25,7 @@
                 "news_box.css",
                 "ext/bootstrap.min.css"
             ],
-        "run_at": "document_idle"
+        "all frames": true
         }
       ],
     "manifest_version": 2,
