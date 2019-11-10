@@ -76,19 +76,19 @@ def main():
         for site in left:
             if site in docSource:
                 alreadyFound = True
-                validHosts = center+right
+                validHosts = center.extend(right)
 
     if not alreadyFound:
         for site in center:
             if site in docSource:
                 alreadyFound = True
-                validHosts = left.exx
+                validHosts = left.extend(right)
 
     if not alreadyFound:
         for site in right:
             if site in docSource:
                 alreadyFound = True
-                validHosts = center+left
+                validHosts = center.extend(left)
 
     print(validHosts)
     print(center)
