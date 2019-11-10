@@ -41,7 +41,8 @@ def first_query(discovery, title):
 
 def second_query(discovery, docID, docurl, validHosts):
     #Insert code using data from first document to find similar documents
-    secondDoc = discovery.query(environment_id, collection_id, query = "host:{}".format(validHosts),
+    print(validHosts)
+    secondDoc = discovery.query(environment_id, collection_id, query = "host:'abc.com'",
                                 similar=True, similar_document_ids=docID, count = 5, deduplicate = True)  
 
     return secondDoc
@@ -81,7 +82,7 @@ def main():
         for site in center:
             if site in docSource:
                 alreadyFound = True
-                validHosts = left+right
+                validHosts = left.exx
 
     if not alreadyFound:
         for site in right:
@@ -89,10 +90,12 @@ def main():
                 alreadyFound = True
                 validHosts = center+left
 
+    print(validHosts)
+    print(center)
 
     secondDoc = second_query(discover, docID, docTitle, validHosts)
-    print(secondDoc.get_result()['results'][0]['url'])
-    print(secondDoc.get_result()['results'][0]['title'])
+    #print(secondDoc.get_result()['results'][0]['url'])
+    #print(secondDoc.get_result()['results'][0]['title'])
     #print(secondDoc['result'][0]['title'])
     #docTitle = secondDoc.get_result()['results'][0]['title']
 

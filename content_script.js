@@ -9,7 +9,7 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
     // console.log("sending GET...");
     var encodedURL = encodeURIComponent(msg);
     // console.log(encodedURL);
-    $("#yes-but".text("Searching..."));
+    $("#yes-but").text("Searching..."));
     console.log("sending request");
 
     fetch("https://centipeda.cc/test/get/" + encodedURL, { method: "GET" }).then( (res) => res.json()).then( (result) => {
