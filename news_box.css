@@ -2,9 +2,9 @@
     font: Roboto !important;
     position: fixed !important;
     background-color: white !important;
-    width: 350px !important;
+    width: 300px !important;
     max-height: 900px !important;
     z-index: 10000 !important;
-    top: 100px !important;
+    top: 25px !important;
     right: 50px !important;
 }

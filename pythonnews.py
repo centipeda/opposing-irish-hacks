@@ -6,6 +6,7 @@ from urllib.parse import urlparse
 from ibm_watson import DiscoveryV1
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 
+API_KEY = 'JuD8ZyOZjrfEJzMiPjIRLUTLejmuEe8kuyKUn1xSzeol'
 environment_id = 'system'
 collection_id = 'news-en'
 
@@ -23,7 +24,7 @@ def get_title(url):
     return article.title
 
 def watson_auth():
-    authenticator = IAMAuthenticator('JuD8ZyOZjrfEJzMiPjIRLUTLejmuEe8kuyKUn1xSzeol')
+    authenticator = IAMAuthenticator(API_KEY)
     discovery = DiscoveryV1(
         version='2019-04-30',
         authenticator=authenticator
