@@ -37,10 +37,10 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
             for (x in aData) {
                 article = aData[x];
                 var space = "<hr>";
-                var t = "<h5><a href=\"" +article.url + "\">" + article.title + "</h5>";
+                var t = "<h5><a href=\"" + article.url + "\">" + article.title + "</h5>";
                 //var u = "<h5><a href=\"" +article.url + "\">" + article.url + " </a></h5>";
                 var b = "<p>Bias of article: " + article.bias + "</p>";
-                $("#morenews").append(space, t, u, b);
+                $("#morenews").append(space, t, b);
             };
             console.log(result);
         }
