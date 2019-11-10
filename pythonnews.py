@@ -44,13 +44,17 @@ def first_query(discovery, title):
 
 def second_query(discovery, docID, docurl, validHosts, alignment):
     #Insert code using data from first document to find similar documents
-    print(validHosts)
     secondDoc = discovery.query(environment_id, collection_id, query = "host:{}".format(" ".join(validHosts)),
                                 similar=True, similar_document_ids=docID, count = 5, deduplicate = True)  
 
     docInfo = (secondDoc, alignment)
     return docInfo
 
+def format_output(docsInfo):
+    obj = {}
+    docsInfo[0]
+
+    return obj
 
 def main():
     url = get_url()
@@ -71,8 +75,8 @@ def main():
 
     #Filter Sources
     center = ["bbc.com", "apnews.com", "reuters.com", "npr.org", "abcnews.go.com", "wsj.com", "nytimes.com", "politico.com", "cbsnews.com", "businessinsider.com", "fortune.com"]
-    left = ["cnn.com", "washingtonpost.com", "vox.com", "newyorker.com", "theatlantic.com", "huffingtonpost.com", "vanityfair.com", "progressive.org"]
-    right =["foxnews.com", "msnbc.com", "nypost.com", "reason.com"]
+    left = ["cnn.com", "msnbc.com", "washingtonpost.com", "vox.com", "newyorker.com", "theatlantic.com", "huffingtonpost.com", "vanityfair.com", "progressive.org"]
+    right =["foxnews.com", "theamericanconservative.com", "nypost.com", "reason.com"]
 
     alreadyFound = False
     validHosts = ''

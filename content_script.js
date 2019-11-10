@@ -2,8 +2,8 @@ $.get(chrome.extension.getURL("news_box.html"), function(data) {
     // console.log("getting data");
     $("body").prepend(data);
     // console.log("sending GET...");
-    url = chrome.runtime.getURL("media/light_square.png");
-    $("#card-image").attr("src", url);
+     url = chrome.runtime.getURL("media/light_width.png");
+     $("#card-image").attr("src", url);
 });
 
 chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
