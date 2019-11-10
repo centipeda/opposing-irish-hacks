@@ -34,15 +34,15 @@ def watson_auth():
     # Env and Collection IDs
 
 def first_query(discovery, title):
-    firstDoc = discovery.query(environment_id, collection_id, filter="title:{}".format(title), deduplicate = True, deduplicate_field=title, count = 20)
+    firstDoc = discovery.query(environment_id, collection_id, filter="title:{}".format(title), query="title:{}".format(title), deduplicate = True, deduplicate_field=title, count = 20)
 
     # print(firstDoc)
     return firstDoc
 
-def second_query(discovery, docID, docurl):
+def second_query(discovery, docID, docurl, validHosts):
     #Insert code using data from first document to find similar documents
-    secondDoc = discovery.query(environment_id, collection_id, query="title:{}".format(docurl),
-                                similar=True, similar_document_ids=docID, similar_fields = "title", count = 5, deduplicate = True)  
+    secondDoc = discovery.query(environment_id, collection_id, query = "host:{}".format(validHosts),
+                                similar=True, similar_document_ids=docID, count = 5, deduplicate = True)  
 
     return secondDoc
 
@@ -50,17 +50,49 @@ def second_query(discovery, docID, docurl):
 def main():
     url = get_url()
     title = get_title(url)
+
     discover = watson_auth()
     firstDoc = first_query(discover, title)
     #docID = print(json.dumps(firstDoc.get_result()[0], indent=2))
     #docID = firstDoc.get_result()['results'][0]['id']
     docID = firstDoc.get_result()['results'][0]['id']
-    docurl = firstDoc.get_result()['results'][0]['title']
+    docTitle = firstDoc.get_result()['results'][0]['title']
+    docSource = firstDoc.get_result()['results'][0]['host']
+    print(docTitle)
+    print(docSource)
     #docConcepts = firstDoc.get_results()['enrichments'][0]['options']['concepts']
     #print(docConcepts)
-    secondDoc = second_query(discover, docID, docurl)
-    print(secondDoc.get_result()['results'][2]['url'])
-    print(secondDoc.get_result()['results'][2]['title'])
+
+    #Filter Sources
+    center = ["bbc.com", "apnews.com", "reuters.com", "npr.org", "abcnews.go.com", "wsj.com", "nytimes.com", "politico.com", "cbsnews.com", "businessinsider.com", "fortune.com"]
+    left = ["cnn.com", "washingtonpost.com", "vox.com", "newyorker.com", "theatlantic.com", "huffingtonpost.com", "vanityfair.com", "progressive.org"]
+    right =["foxnews.com", "msnbc.com", "nypost.com", "reason.com"]
+
+    alreadyFound = False
+    validHosts = ''
+
+    if not alreadyFound:
+        for site in left:
+            if site in docSource:
+                alreadyFound = True
+                validHosts = center+right
+
+    if not alreadyFound:
+        for site in center:
+            if site in docSource:
+                alreadyFound = True
+                validHosts = left+right
+
+    if not alreadyFound:
+        for site in right:
+            if site in docSource:
+                alreadyFound = True
+                validHosts = center+left
+
+
+    secondDoc = second_query(discover, docID, docTitle, validHosts)
+    print(secondDoc.get_result()['results'][0]['url'])
+    print(secondDoc.get_result()['results'][0]['title'])
     #print(secondDoc['result'][0]['title'])
     #docTitle = secondDoc.get_result()['results'][0]['title']
 

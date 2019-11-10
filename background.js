@@ -6,5 +6,4 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
         chrome.tabs.sendMessage(tabs[0].id, tab.url, function(response) {});  
       });
     }
-    
 });

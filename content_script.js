@@ -9,12 +9,11 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
     // console.log("sending GET...");
     var encodedURL = encodeURIComponent(msg);
     // console.log(encodedURL);
+    $("#yes-but".text("Searching..."));
+    console.log("sending request");
 
-    fetch("https://centipeda.cc/test/get/" + encodedURL,
-        {
-            // mode: "no-cors",
-            method: "GET"
-        }).then( (res) => res.json()).then( (result) => {
+    fetch("https://centipeda.cc/test/get/" + encodedURL, { method: "GET" }).then( (res) => res.json()).then( (result) => {
+            console.log("response obtained");
             // result will be a list of objects that have
             // properties like: url, title...
             class Article {
@@ -25,7 +24,7 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
                 }
             }
             aData = JSON.parse(result.data);
-            console.log(aData);
+            // console.log(aData);
             /*
             article1 = new Article ("https://www.foxnews.com/politics/trump-brushes-off-witch-hunt-impeachment-probe", "Trump wants Pelosi, Biden to be called as impeachment inquiry witnesses, says he'll release second phone call transcript", "right");
             article2 = new Article ("https://www.nbcnews.com/politics/trump-impeachment-inquiry/only-3-senate-republicans-aren-t-defending-trump-impeachment-inquiry-n1078906", "Only 3 Senate Republicans aren't defending Trump from the impeachment inquiry. Here's why.", "left");
@@ -43,35 +42,36 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
                 var b = "<p>Bias of article: " + article.bias + "</p>";
                 $("#morenews").append(space, t, b);
             };
-            console.log(result);
-            // $("#yes-but").text("Hide");
-        }
-    );
+            // console.log(result);
+            $("#yes-but").text("Hide");
+            return Promise.resolve("dummy event");
+        });
   });
-
 
 
 $(function() {
     $("#closebutton").click(function() {
-    console.log("clicked");
-    console.log($("#mainbox").fadeOut());
-    // $("#mainbox").css("background-color", "blue");
-            
+        console.log("clicked");
+        console.log($("#mainbox").fadeOut());
+        // $("#mainbox").css("background-color", "blue");
     });
 
     $("#yes-but").click( function() {
-        if($("#yes-but").attr("touched") == "false") {
-            console.log("clicked once");
-            $("#yes-but").text("Searching...");
-            $("#yes-but").attr("touched", "once");
-        } else if($("#yes-but").attr("touched") == "once") {
-            $("#yes-but").text("Hide");
+        //if($("#yes-but").attr("touched") == "false") {
+        //    console.log("clicked once");
+        //    $("#yes-but").text("Searching...");
+        //    $("#yes-but").attr("touched", "once"); }
+        if($("#yes-but").attr("touched") == "once") {
+            $("#yes-but").text("Show");
             $("#yes-but").attr("touched", "twice");
         } else if($("#yes-but").attr("touched") == "twice") {
-            $("#yes-but").text("Show");
+            $("#yes-but").text("Hide");
             $("#yes-but").attr("touched", "once");
         }
+    });
+});
 
+    /*
     var targetNode = document.querySelector("#yes-but");
     var observerOptions = {
     childList: false,
@@ -79,15 +79,17 @@ $(function() {
     subtree: false //Omit or set to false to observe only changes to the parent node.
     };
     function callback(mutationList, observer) {
+        try {
         mutationList.forEach( (mutation) => {
-            console.log(mutation);
+            // console.log(mutation);
             if(mutation.type == 'attributes' && mutation.attributeName == "aria-expanded") {
                 console.log(mutation);
+                throw BreakException;
             }
-        });
+        }); } catch (e) {
+            console.log
+        }
     }
-
     observer = new MutationObserver(callback);
     observer.observe(targetNode, observerOptions);
-    });
-});
+    */
