@@ -4,6 +4,7 @@ import os
 import sys
 import newspaper
 
+
 for l in sys.stdin:
     articleLink = l
 article = newspaper.Article(articleLink)
