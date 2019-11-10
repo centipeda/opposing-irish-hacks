@@ -9,10 +9,8 @@ from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 environment_id = 'system'
 collection_id = 'news-en'
 
-
-
 def get_url():
-    return "https://www.npr.org/2019/11/08/777573489/white-house-broke-from-normal-process-handling-trump-ukraine-call-witness-said"
+    # return "https://www.npr.org/2019/11/08/777573489/white-house-broke-from-normal-process-handling-trump-ukraine-call-witness-said"
     for l in sys.stdin:
         url = l
     return url
@@ -21,7 +19,7 @@ def get_title(url):
     article = newspaper.Article(url)
     article.download()
     article.parse()
-    print("article title: ".format(article.title))
+    # print("article title: ".format(article.title))
     return article.title
 
 def watson_auth():
@@ -51,10 +49,18 @@ def second_query(discovery, docID, docurl, validHosts, alignment):
     return docInfo
 
 def format_output(docsInfo):
-    obj = {}
-    docsInfo[0]
-
-    return obj
+    output = []
+    for doc in docsInfo:
+        title = doc[0].get_result()['results'][0]['title']
+        url = doc[0].get_result()['results'][0]['url']
+        bias = doc[1]
+        obj = {
+            "title": title,
+            "url": url,
+            "bias": bias
+        }
+        output.append(obj)
+    return output
 
 def main():
     url = get_url()
@@ -106,13 +112,8 @@ def main():
                 secondDocFirst = second_query(discover, docID, docTitle, center, "center")
                 secondDocSecond = second_query(discover, docID, docTitle, left, "left")
 
-
-    print(secondDocFirst[0].get_result()['results'][0]['url'])
-    print(secondDocFirst[0].get_result()['results'][0]['title'])
-    print(secondDocFirst[1])
-    print(secondDocSecond[0].get_result()['results'][0]['url'])
-    print(secondDocSecond[0].get_result()['results'][0]['title'])
-    print(secondDocSecond[1])
+    output = json.dumps(format_output([secondDocFirst, secondDocSecond]))
+    print(output)
 
 def test():
     url = get_url()
