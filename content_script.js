@@ -9,7 +9,6 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
     // console.log("sending GET...");
     var encodedURL = encodeURIComponent(msg);
     // console.log(encodedURL);
-    $("#yes-but").text("Hide");
 
     fetch("https://centipeda.cc/test/get/" + encodedURL,
         {
@@ -45,6 +44,7 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
                 $("#morenews").append(space, t, b);
             };
             console.log(result);
+            // $("#yes-but").text("Hide");
         }
     );
   });
@@ -61,9 +61,33 @@ $(function() {
 
     $("#yes-but").click( function() {
         if($("#yes-but").attr("touched") == "false") {
+            console.log("clicked once");
             $("#yes-but").text("Searching...");
-        } else {
-            $("#yes-but".text(""))
+            $("#yes-but").attr("touched", "once");
+        } else if($("#yes-but").attr("touched") == "once") {
+            $("#yes-but").text("Hide");
+            $("#yes-but").attr("touched", "twice");
+        } else if($("#yes-but").attr("touched") == "twice") {
+            $("#yes-but").text("Show");
+            $("#yes-but").attr("touched", "once");
         }
+
+    var targetNode = document.querySelector("#yes-but");
+    var observerOptions = {
+    childList: false,
+    attributes: true,
+    subtree: false //Omit or set to false to observe only changes to the parent node.
+    };
+    function callback(mutationList, observer) {
+        mutationList.forEach( (mutation) => {
+            console.log(mutation);
+            if(mutation.type == 'attributes' && mutation.attributeName == "aria-expanded") {
+                console.log(mutation);
+            }
+        });
+    }
+
+    observer = new MutationObserver(callback);
+    observer.observe(targetNode, observerOptions);
     });
 });

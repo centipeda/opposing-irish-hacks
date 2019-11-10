@@ -39,10 +39,12 @@ def first_query(discovery, title):
     # print(firstDoc)
     return firstDoc
 
-def second_query(discovery, docID):
+def second_query(discovery, docID, docurl):
     #Insert code using data from first document to find similar documents
-    secondDoc = discovery.query(environment_id, collection_id, query='enriched_text.concepts'
-                                similar=True, similar.document_ids=docID, count = 5)  
+    secondDoc = discovery.query(environment_id, collection_id, query="title:{}".format(docurl),
+                                similar=True, similar_document_ids=docID, similar_fields = "title", count = 5, deduplicate = True)  
+
+    return secondDoc
 
 
 def main():
@@ -53,9 +55,12 @@ def main():
     #docID = print(json.dumps(firstDoc.get_result()[0], indent=2))
     #docID = firstDoc.get_result()['results'][0]['id']
     docID = firstDoc.get_result()['results'][0]['id']
-    print(docID)
-    secondDoc = second_query(discover, docID)
-    print(secondDoc.get_result())
+    docurl = firstDoc.get_result()['results'][0]['title']
+    #docConcepts = firstDoc.get_results()['enrichments'][0]['options']['concepts']
+    #print(docConcepts)
+    secondDoc = second_query(discover, docID, docurl)
+    print(secondDoc.get_result()['results'][2]['url'])
+    print(secondDoc.get_result()['results'][2]['title'])
     #print(secondDoc['result'][0]['title'])
     #docTitle = secondDoc.get_result()['results'][0]['title']
 

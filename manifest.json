@@ -31,11 +31,13 @@
         }
       ],
     "browser_action": {
-        "default_icon": "media/square_one.png"
+        "default_icon": "media/light_square.png"
     },
     "manifest_version": 2,
     "web_accessible_resources": [
         "news_box.html",
-        "news_box.css"
+        "news_box.css",
+        "media/light_square.png",
+        "media/light_width.png"
     ]
 }
