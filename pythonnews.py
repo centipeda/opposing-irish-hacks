@@ -1,4 +1,5 @@
 import os
+import sys
 import newspaper
 import json
 from ibm_watson import DiscoveryV1
@@ -6,11 +7,18 @@ from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 
 environment_id = 'system'
 collection_id = 'news-en'
+
+def get_url():
+    return "https://www.npr.org/2019/11/08/777573489/white-house-broke-from-normal-process-handling-trump-ukraine-call-witness-said"
+    for l in sys.stdin:
+        url = l
+    return url
     
 def get_title(url):
-
-
-    return title
+    article = newspaper.Article(url)
+    article.download()
+    article.parse()
+    return article.title
 
 def watson_auth():
     authenticator = IAMAuthenticator('JuD8ZyOZjrfEJzMiPjIRLUTLejmuEe8kuyKUn1xSzeol')
@@ -22,19 +30,29 @@ def watson_auth():
 
     return discovery
 
-    #Env and Collection IDs
+    # Env and Collection IDs
 
-def firstQuery()
-firstDoc = discovery.query(environment_id, collection_id, query="title:William Barr", deduplicate = True)
+def first_query(discovery, title):
+    firstDoc = discovery.query(environment_id, collection_id, query="title::{}".format(title), deduplicate = True)
 
-print(firstDoc)
+    # print(firstDoc)
+    return firstDoc
+
+def second_query(discovery, docID):
+    #Insert code using data from first document to find similar documents
+    secondDoc = discovery.query(environment_id, collection_id, query=None,
+                                similar=True, similar_document_ids=docID)  
 
 
 def main():
+    url = get_url()
+    title = get_title(url)
     discover = watson_auth()
-    title = get_title()
+    docID = first_query(discover, title)
+    # second_query(discover, docID)
 
-main()
+if __name__ == "__main__":
+    main()
 
 """
 query(self, environment_id, collection_id, filter=None, query=None,

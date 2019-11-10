@@ -1,9 +1,3 @@
-var style = document.createElement('link');
-style.rel = 'stylesheet';
-style.type = 'text/css';
-style.href = chrome.extension.getURL('news_box.css');
-(document.head||document.documentElement).appendChild(style);
-
 $.get(chrome.extension.getURL("news_box.html"), function(data) {
     // console.log("getting data");
     $("body").prepend(data);
