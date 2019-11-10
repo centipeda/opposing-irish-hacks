@@ -18,11 +18,11 @@
         "js": [ "ext/jquery-3.4.1.min.js",
                 "ext/popup.js",
                 "ext/material.min.js",
-                "./content_script.js",
+                "content_script.js",
                 "ext/bootstrap.bundle.min.js"],
 
         "css": ["ext/material.min.css",
-                "./news_box.css",
+                "news_box.css",
                 "ext/bootstrap.min.css"
             ]
         }
