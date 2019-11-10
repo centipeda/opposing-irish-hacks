@@ -34,7 +34,7 @@ def watson_auth():
     # Env and Collection IDs
 
 def first_query(discovery, title):
-    firstDoc = discovery.query(environment_id, collection_id, filter="title:{}".format(title), query="title:{}".format(title), count = 1)
+    firstDoc = discovery.query(environment_id, collection_id, filter="title:{}".format(title), query="title:{}".format(title), count = 20)
 
     # print(firstDoc)
     return firstDoc
@@ -51,11 +51,11 @@ def main():
     discover = watson_auth()
     firstDoc = first_query(discover, title)
     #docID = print(json.dumps(firstDoc.get_result()[0], indent=2))
-    docID = firstDoc.get_result()['results'][0]['id']
-    #docID = len(firstDoc.get_result()['results'])
-    #print(docID)
-    secondDoc = second_query(discover, docID)
-    docTitle = secondDoc.get_result()['results'][0]['title']
+    #docID = firstDoc.get_result()['results'][0]['id']
+    docID = len(firstDoc.get_result()['results'])
+    print(docID)
+    #secondDoc = second_query(discover, docID)
+    #docTitle = secondDoc.get_result()['results'][0]['title']
 
 def test():
     url = get_url()
