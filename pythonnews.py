@@ -9,7 +9,7 @@ from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 environment_id = 'system'
 collection_id = 'news-en'
 
-hostName = urlparse(url).netloc
+
 
 def get_url():
     return "https://www.npr.org/2019/11/08/777573489/white-house-broke-from-normal-process-handling-trump-ukraine-call-witness-said"
@@ -45,7 +45,7 @@ def first_query(discovery, title):
 def second_query(discovery, docID, docurl, validHosts):
     #Insert code using data from first document to find similar documents
     print(validHosts)
-    secondDoc = discovery.query(environment_id, collection_id, query = "host:'abc.com'",
+    secondDoc = discovery.query(environment_id, collection_id, query = "host:{}".format(validHosts),
                                 similar=True, similar_document_ids=docID, count = 5, deduplicate = True)  
 
     return secondDoc
@@ -54,6 +54,8 @@ def second_query(discovery, docID, docurl, validHosts):
 def main():
     url = get_url()
     title = get_title(url)
+    docSource = urlparse(get_url()).netloc
+    docSource = docSource[4:]
 
     discover = watson_auth()
     firstDoc = first_query(discover, title)
@@ -61,9 +63,8 @@ def main():
     #docID = firstDoc.get_result()['results'][0]['id']
     docID = firstDoc.get_result()['results'][0]['id']
     docTitle = firstDoc.get_result()['results'][0]['title']
-    docSource = firstDoc.get_result()['results'][0]['host']
-    print(docTitle)
-    print(docSource)
+    #docSource = firstDoc.get_result()['results'][0]['host']
+    #print(docSource)
     #docConcepts = firstDoc.get_results()['enrichments'][0]['options']['concepts']
     #print(docConcepts)
 
@@ -85,7 +86,7 @@ def main():
         for site in center:
             if site in docSource:
                 alreadyFound = True
-                validHosts = left.extend(right)
+                validHosts = left+right
 
     if not alreadyFound:
         for site in right:
@@ -93,14 +94,10 @@ def main():
                 alreadyFound = True
                 validHosts = center.extend(left)
 
-    print(validHosts)
-    print(center)
 
     secondDoc = second_query(discover, docID, docTitle, validHosts)
-    #print(secondDoc.get_result()['results'][0]['url'])
-    #print(secondDoc.get_result()['results'][0]['title'])
-    #print(secondDoc['result'][0]['title'])
-    #docTitle = secondDoc.get_result()['results'][0]['title']
+    print(secondDoc.get_result()['results'][0]['url'])
+    print(secondDoc.get_result()['results'][0]['title'])
 
 def test():
     url = get_url()

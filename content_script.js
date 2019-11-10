@@ -9,7 +9,7 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
     // console.log("sending GET...");
     var encodedURL = encodeURIComponent(msg);
     // console.log(encodedURL);
-    $("#yes-but").text("Searching...");
+    // $("#yes-but").text("Searching...");
     console.log("sending request");
 
     fetch("https://centipeda.cc/test/get/" + encodedURL, { method: "GET" }).then( (res) => res.json()).then( (result) => {
@@ -43,7 +43,7 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
                 $("#morenews").append(space, t, b);
             };
             // console.log(result);
-            $("#yes-but").text("Hide");
+            // $("#yes-but").text("Hide");
             return Promise.resolve("dummy event");
         });
   });
@@ -60,8 +60,8 @@ $(function() {
         if($("#yes-but").attr("touched") == "false") {
             console.log("clicked once");
             $("#yes-but").text("Searching...");
-            $("#yes-but").attr("touched", "once"); }
-        if($("#yes-but").attr("touched") == "once") {
+            $("#yes-but").attr("touched", "once");
+        } else if($("#yes-but").attr("touched") == "once") {
             $("#yes-but").text("Show");
             $("#yes-but").attr("touched", "twice");
         } else if($("#yes-but").attr("touched") == "twice") {
